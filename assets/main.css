@@ -1,0 +1,14 @@
+body{
+    height:100vh;
+}
+
+.container{
+    background-color: #fffcf5;
+    border: 2px solid #ebebeb;
+    margin-top: 12px;
+    height:80%;
+}
+
+.image-container{
+    
+}
