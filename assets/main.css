@@ -7,8 +7,28 @@ body{
     border: 2px solid #ebebeb;
     margin-top: 12px;
     height:80%;
+    padding:10px;
+    overflow-y: scroll;
 }
 
-.image-container{
+.img-thumbnail{
+    display: inline-block;
+    width: 33%;
+    height: 50%;
+}
+.img-thumbnail:hover{
     
+}
+
+.add-image-button{
+    opacity: 0.3;
+}
+.add-image-button:hover{
+    -ms-transform: scale(1.02); /* IE 9 */
+    -webkit-transform: scale(1.02); /* Safari 3-8 */
+    transform: scale(1.02); 
+    transition: transform 100ms;
+    border: 1px solid rgb(94, 94, 94);
+    opacity: 0.8;
+    transition: opacity 1000ms;
 }
