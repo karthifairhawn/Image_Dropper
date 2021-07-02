@@ -19,7 +19,10 @@ body{
 .img-thumbnail:hover{
     
 }
-
+.uploader{
+    position:absolute;
+    right: 0;
+}
 .add-image-button{
     opacity: 0.3;
 }
