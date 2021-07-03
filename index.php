@@ -8,7 +8,8 @@
       $file_size =$_FILES['image']['size'];
       $file_tmp =$_FILES['image']['tmp_name'];
       $file_type=$_FILES['image']['type'];
-      $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
+      $tmp = explode('.', $file_name);
+      $file_ext = end($tmp);
       
       $extensions= array("jpeg","jpg","png");
       
@@ -16,8 +17,8 @@
          $errors[]="Please choose a JPEG or PNG file.";
       }
       
-      if($file_size > 2097152){
-         $errors[]='Upload less than 2 MB';
+      if($file_size > 5242880){
+         $errors[]='Upload less than 5 MB';
       }
       
       if(empty($errors)==true){
