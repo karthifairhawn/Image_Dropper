@@ -9,19 +9,29 @@ body{
     height:80%;
     padding:10px;
     overflow-y: scroll;
+    
 }
 
 .img-thumbnail{
     display: inline-block;
-    width: 33%;
+    width: 350px;
     height: 50%;
 }
+
+
+
+
 .img-thumbnail:hover{
     
 }
-.uploader{
+#uploader{
+    display:none;
+}
+#uploader_submit{
     position:absolute;
-    right: 0;
+    right: 10px;
+    top:10px;
+
 }
 .add-image-button{
     opacity: 0.3;
