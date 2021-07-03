@@ -1,3 +1,38 @@
+
+
+
+<?php
+   if(isset($_FILES['image'])){
+      $errors= array();
+      $file_name = $_FILES['image']['name'];
+      $file_size =$_FILES['image']['size'];
+      $file_tmp =$_FILES['image']['tmp_name'];
+      $file_type=$_FILES['image']['type'];
+      $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
+      
+      $extensions= array("jpeg","jpg","png");
+      
+      if(in_array($file_ext,$extensions)=== false){
+         $errors[]="Please choose a JPEG or PNG file.";
+      }
+      
+      if($file_size > 2097152){
+         $errors[]='Upload less than 2 MB';
+      }
+      
+      if(empty($errors)==true){
+         move_uploaded_file($file_tmp,"images/".$file_name);
+         echo "Success";
+      }else{
+         print_r($errors);
+      }
+   }
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +47,8 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
         <a class="navbar-brand" href="#!">Image Dropper</a>
-        <form action="index.php" method="POST">
-            <input id="uploader" type="file">
+        <form action="index.php" method="POST" enctype="multipart/form-data">
+            <input name="image" id="uploader" type="file">
             <input id="uploader_submit" value="Upload Image" type="submit">
         </form>
     </nav>
