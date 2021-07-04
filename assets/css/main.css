@@ -35,13 +35,18 @@ body{
 }
 .add-image-button{
     opacity: 0.3;
+    transition: opacity 100ms;
+
 }
 .add-image-button:hover{
     -ms-transform: scale(1.02); /* IE 9 */
     -webkit-transform: scale(1.02); /* Safari 3-8 */
     transform: scale(1.02); 
     transition: transform 100ms;
-    border: 1px solid rgb(94, 94, 94);
     opacity: 0.8;
-    transition: opacity 1000ms;
+    transition: opacity 300ms;
+}
+
+.container .uploaded{
+    display:none !important;
 }
