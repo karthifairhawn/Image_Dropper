@@ -27,11 +27,19 @@ body{
 #uploader{
     display:none;
 }
-#uploader_submit{
+.form{
     position:absolute;
     right: 10px;
     top:10px;
+    visibility:hidden;
+}
 
+.form-active{
+    visibility:visible;
+}
+
+.img-name{
+    color:rgb(255, 255, 255);
 }
 .add-image-button{
     opacity: 0.3;

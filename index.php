@@ -48,7 +48,8 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
         <a class="navbar-brand" href="#!">Image Dropper</a>
-        <form action="index.php" method="POST" enctype="multipart/form-data">
+        <form class="form" action="index.php" method="POST" enctype="multipart/form-data">
+            <label class="img-name">Image Name</label>
             <input name="image" id="uploader" type="file">
             <input id="uploader_submit" value="Upload Image" type="submit">
         </form>
