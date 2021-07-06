@@ -17,8 +17,8 @@
          $errors[]="Please choose a JPEG or PNG file.";
       }
       
-      if($file_size > 5242880){
-         $errors[]='Upload less than 5 MB';
+      if($file_size > 10242880){
+         $errors[]='Upload less than 10 MB';
       }
       
       if(empty($errors)==true){

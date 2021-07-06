@@ -15,7 +15,7 @@ function uploaded_check(){
             document.getElementsByClassName("form")[0].classList.add("form-active");
             document.getElementsByClassName("form")[0]
             var filename = document.getElementById("uploader").value;
-            filename = filename.split("\'");
+            filename = filename.split('\'');
             document.getElementsByClassName("img-name")[0].innerText =  filename;
             
         }
