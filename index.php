@@ -20,7 +20,7 @@
       
       if(empty($errors)==true){
          move_uploaded_file($file_tmp,"images/".$file_name);
-         echo "Success";
+         echo '<div id="uploaded"><h3><center>Image has been uploaded successfully</h3></centerh3></div>';
       }else{
          print_r($errors);
       }
