@@ -1,14 +1,20 @@
 <?php
+   include 'assets/php/conn.php';
    if(isset($_FILES['image'])){
       $errors= array();
       $file_name = $_FILES['image']['name'];
+
+      mysqli_query($conn, "INSERT INTO `file_location` (`name`, `date`) VALUES ('$file_name', current_timestamp())");
+
+
       $file_size =$_FILES['image']['size'];
+      $file_name = mysqli_real_escape_string($file_name);
       $file_tmp =$_FILES['image']['tmp_name'];
       $file_type=$_FILES['image']['type'];
       $tmp = explode('.', $file_name);
       $file_ext = end($tmp);
       
-      $extensions= array("jpeg","jpg","png");
+      $extensions= array("jpeg","jpg","png","jfif");
       
       if(in_array($file_ext,$extensions)=== false){
          $errors[]="Please choose a JPEG or PNG file.";
@@ -19,11 +25,15 @@
       }
       
       if(empty($errors)==true){
-         move_uploaded_file($file_tmp,"images/".$file_name);
-         echo '<div id="uploaded"><h3><center>Image has been uploaded successfully</h3></centerh3></div>';
+         move_uploaded_file($file_tmp,"images/".$file_name);         
       }else{
          print_r($errors);
       }
+   }
+   $image_data="";
+   $data = mysqli_query($conn,"SELECT * FROM file_location Order by date desc");
+   while($row = mysqli_fetch_assoc($data)){
+      $image_data.='<div class="item"><img class="img-thumbnail" src="images/'.$row['name'].'" alt="Thumbnail image"></div>';
    }
 ?>
 
@@ -51,16 +61,14 @@
             <input id="uploader_submit" value="Upload Image" type="submit">
         </form>
     </nav>
+      <div class="upload">
+
+         <img id="upload_plus" onclick="upload();" class="add-image-button" src="https://365psd.com/images/istock/previews/1051/105180343-plus-icon-stock-vector-illustration-flat-design.jpg" alt="Thumbnail image">    
+      </div>
+
     <div class="container">
-        <img id="upload_plus" onclick="upload()" class="img-thumbnail add-image-button" src="https://365psd.com/images/istock/previews/1051/105180343-plus-icon-stock-vector-illustration-flat-design.jpg" alt="Thumbnail image">    
-        <img class="img-thumbnail" src="https://cdn-prod.medicalnewstoday.com/content/images/articles/325/325466/man-walking-dog.jpg" alt="Thumbnail image">    
-        <img class="img-thumbnail" src="https://cdn-prod.medicalnewstoday.com/content/images/articles/325/325466/man-walking-dog.jpg" alt="Thumbnail image">    
-        <img class="img-thumbnail" src="https://cdn-prod.medicalnewstoday.com/content/images/articles/325/325466/man-walking-dog.jpg" alt="Thumbnail image">    
-        <img class="img-thumbnail" src="https://cdn-prod.medicalnewstoday.com/content/images/articles/325/325466/man-walking-dog.jpg" alt="Thumbnail image">    
-        <img class="img-thumbnail" src="https://cdn-prod.medicalnewstoday.com/content/images/articles/325/325466/man-walking-dog.jpg" alt="Thumbnail image">    
-        <img class="img-thumbnail" src="https://cdn-prod.medicalnewstoday.com/content/images/articles/325/325466/man-walking-dog.jpg" alt="Thumbnail image">    
-        <img class="img-thumbnail" src="https://cdn-prod.medicalnewstoday.com/content/images/articles/325/325466/man-walking-dog.jpg" alt="Thumbnail image">    
-        <img class="img-thumbnail" src="https://cdn-prod.medicalnewstoday.com/content/images/articles/325/325466/man-walking-dog.jpg" alt="Thumbnail image"> 
+        
+        <?php echo $image_data ?>
     </div>   
         <script src="assets/js/input.js "></script>
 
